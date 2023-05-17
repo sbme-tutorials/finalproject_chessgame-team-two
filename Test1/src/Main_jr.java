@@ -17,15 +17,17 @@ public class Main_jr extends JFrame implements ActionListener {
         frame.setLayout(null);
         frame.setTitle("Chess Game");
         frame.getContentPane().setBackground(new Color(0x494949));
-        ImageIcon image = new ImageIcon("th.jpeg");
+        ImageIcon image = new ImageIcon("resources/logo.jpg");
         frame.setIconImage(image.getImage());
-        start_btn.setBounds(300, 375, 200, 40);
-        status_btn.setBounds(300, 435, 200, 40);
+        start_btn.setBounds(300, 275, 200, 40);
+        start_btn.setFont(new Font("Callibri", Font.BOLD, 22));
+        status_btn.setBounds(300, 335, 200, 40);
+        status_btn.setFont(new Font("Callibri", Font.BOLD, 22));
         logout_btn.setBounds(10, 700, 100, 40);
-        label.setText("Main Page");
-        label.setForeground(Color.white);
-        label.setBounds(250, 200, 400, 100);
-        label.setFont(new Font("B", Font.BOLD, 48));
+        //logout_btn.setFont(new Font("Callibri", Font.BOLD, 22));
+        ImageIcon cover=new ImageIcon("resources/main_800x800.jpeg");
+        label.setIcon(cover);
+        label.setBounds(0, 0, 800, 800);
         start_btn.addActionListener(this);
         status_btn.addActionListener(this);
         logout_btn.addActionListener(this);
@@ -34,7 +36,7 @@ public class Main_jr extends JFrame implements ActionListener {
         frame.add(logout_btn);
         frame.add(label);
         frame.setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -43,11 +45,17 @@ public class Main_jr extends JFrame implements ActionListener {
             new_game Game = new new_game(false);
         }
         if(e.getSource()== status_btn){
-            Status status= new Status();
+            Status status=  new Status();
         }
         if(e.getSource()== logout_btn){
-            JOptionPane.showConfirmDialog(null,"Do you want to logout ?","Warning",JOptionPane.YES_NO_OPTION);
-
+            int reply = JOptionPane.showConfirmDialog(null, "Do you want to logout ?", "Warning", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "byeee");
+                frame.dispose();
+                login_page log = new login_page();
+            } else {
+                JOptionPane.showMessageDialog(null, "aywa kdaa et3dl");
+            }
         }
     }
 }

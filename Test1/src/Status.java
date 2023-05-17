@@ -17,16 +17,16 @@ public class Status extends JFrame implements ActionListener {
         label.setBounds(300, 200, 400, 100);
         label.setForeground(Color.white);
         label.setFont(new Font("B",Font.BOLD,48));
-        Object[][] data = {
-                {"Player1", 0, "00:00", "Playing..."},
-                {"Player2", 0, "00:00", "Playing..."},
-        };
-        String[] columnNames = {"Player", "Score", "Time", "Status"};
+        String[] columnNames = {"White Player", "Black Player", "Winner", "Time elapsed","status"};
+        User.ReadDataFromFile();// show data in the file as table
+        Object[][] data = User.GamesArray;
         JTable table = new JTable(data, columnNames);
-        table.getColumnModel().getColumn(0).setPreferredWidth(100);
-        table.getColumnModel().getColumn(1).setPreferredWidth(50);
+        table.getColumnModel().getColumn(0).setPreferredWidth(75);
+        table.getColumnModel().getColumn(1).setPreferredWidth(75);
         table.getColumnModel().getColumn(2).setPreferredWidth(50);
-        table.getColumnModel().getColumn(3).setPreferredWidth(100);
+        table.getColumnModel().getColumn(3).setPreferredWidth(50);
+        table.getColumnModel().getColumn(4).setPreferredWidth(50);
+
         JScrollPane scrollPane = new JScrollPane(table);
 
         this.add(but);
@@ -51,5 +51,5 @@ public class Status extends JFrame implements ActionListener {
         }
     }
 
-    }
+}
 
